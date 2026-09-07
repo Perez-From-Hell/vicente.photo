@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Se ejecuta cada vez que haces push a la rama principal (main)
-  push:
-    branches: [ main ]
-  # Permite ejecutar este flujo manualmente desde la pestaña Actions en GitHub
+  # Se ejecuta únicamente cuando una Pull Request hacia 'main' se cierra (mergeada)
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+  # Permite también ejecutar el despliegue manualmente si alguna vez lo necesitas
   workflow_dispatch:
 
 permissions:
@@ -18,16 +21,21 @@ concurrency:
 
 jobs:
   build:
+    # Solo ejecuta si fue una PR mergeada exitosamente o si se ejecutó manualmente
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Install, build, and upload site
         uses: withastro/action@v3
 
   deploy:
     needs: build
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     environment:
       name: github-pages
