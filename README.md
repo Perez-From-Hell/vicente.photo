@@ -1,168 +1,116 @@
-# 🏺 Clay Theme for Astro
+# 📷 vicente.photo
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/098d9ba5-fd1a-4c6b-83c1-0b70fd7e017c/deploy-status)](https://app.netlify.com/projects/clay-astro-theme/deploys)
+[![Sitio Web](https://img.shields.io/badge/Sitio%20Web-vicente.photo-2ea44f?style=flat-square&logo=google-chrome&logoColor=white)](https://vicente.photo)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-orange?style=flat-square&logo=astro&logoColor=white)](https://astro.build)
+[![Deploy to GitHub Pages](https://github.com/Perez-From-Hell/vicente.photo/actions/workflows/deploy.yml/badge.svg)](https://github.com/Perez-From-Hell/vicente.photo/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-A minimalist, image-centric theme for photographers and artists. Originally a Gatsby theme, now fully ported to **Astro** for superior performance and modern development experience.
+Portafolio fotográfico profesional de **Vicente Pérez Robles**. Un espacio minimalista centrado en la imagen, donde la técnica fotográfica —desde la fotografía digital hasta el gran formato artesanal— se pone al servicio de la narrativa visual y la emoción.
 
-> **Note**: This theme is a modern Astro port of the beautiful [Clay Theme](https://github.com/lilxyzz/clay-theme) by `lilxyzz`.
-
-<p align="center">
-  <img src="public/img/clay_astro_light.png" width="48%" alt="Light Mode" style="border-radius: 10px; border: 1px solid #ddd;">
-  <img src="public/img/clay_astro_dark.png" width="48%" alt="Dark Mode" style="border-radius: 10px; border: 1px solid #333;">
-</p>
-
-📺 Check out the [Live Demo](https://clay-astro-theme.netlify.app) or view on the [Astro Themes Portal](https://astro.build/themes/details/clay/)
+🌐 **Sitio en vivo**: [https://vicente.photo](https://vicente.photo)
 
 ---
 
-## ✨ Features
+## ✨ Características
 
-- ⚡ **Astro-Powered** - Blazing fast static site generation with zero-JS output by default
-- 🎨 **Beautiful Design** - Minimalist and image-centric layout perfect for portfolios
-- 🔄 **Client Router** - Seamless client-side navigation for an SPA-like feel
-- 📱 **Responsive Design** - Mobile-friendly layout with a collapsible menu
-- 🌗 **Dark Mode** - Native dark mode support with toggle switch and persistence
-- 📝 **CMS Ready** - Pre-configured with **Decap CMS** (formerly Netlify CMS)
-- 🎯 **Scoped CSS** - Modular, component-scoped styles replacing legacy monolithic CSS
-- ✍️ **Typography** - Futura for titles/menu (Small Caps) and EB Garamond for body
-- 📚 **Content Collections** - Type-safe Markdown content management
+- ⚡ **Astro v5**: Generación de sitio estático (SSG) de máximo rendimiento con carga instantánea y optimización nativa.
+- 🎨 **Diseño Minimalista**: Enfoque visual centrado en la fotografía, tipografía cuidada y navegación limpia.
+- 🌗 **Modo Claro / Oscuro**: Selector de tema con detección automática de preferencias del sistema y persistencia local.
+- 🔄 **Transiciones Suaves**: Navegación fluida tipo SPA mediante Astro Client Router.
+- 📱 **Completamente Responsivo**: Adaptado para una visualización óptima en móviles, tablets y pantallas de escritorio.
+- 🚀 **CI/CD Automatizado**: Flujo de despliegue continuo con GitHub Actions hacia GitHub Pages.
+- 🌐 **Dominio Personalizado**: Conectado a `vicente.photo` y gestionado mediante AWS Route 53 con soporte HTTPS / SSL.
+- 📝 **Gestión de Contenido**: Contenido estructurado mediante Content Collections de Astro y compatible con Decap CMS.
 
 ---
 
-## 🚀 Quick Start
+## 🗂️ Estructura del Sitio
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/clay-astro-theme.git
-cd clay-astro-theme
+- **Home**: Muestra principal de trabajos destacados.
+- **Bio**: Filosofía, trayectoria, técnica fotográfica (digital y gran formato 9x12 artesanal).
+- **Work**: Galerías y series fotográficas organizadas.
+- **Project**: Proyectos visuales y narrativas específicas.
+- **Contact**: Canales de contacto y consultas profesionales.
 
-# Install dependencies and start dev server
-npm install && npm run dev
+---
+
+## 🛠️ Tecnologías
+
+- **Framework**: [Astro](https://astro.build)
+- **UI / Componentes**: Astro Components + React
+- **Estilos**: PostCSS, variables CSS modulares y estilos limpios
+- **Hosting / Despliegue**: GitHub Pages (vía GitHub Actions)
+- **DNS / Dominio**: AWS Route 53 (`vicente.photo`)
+- **Gestión de Contenido**: Markdown con Colecciones de Contenido de Astro y [Decap CMS](https://decapcms.org/)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```text
+vicente.photo/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # Automatización de build y despliegue a GitHub Pages
+├── public/
+│   ├── admin/              # Configuración de Decap CMS
+│   ├── img/                # Fotografías y recursos gráficos
+│   └── CNAME               # Configuración de dominio vicente.photo para GitHub Pages
+├── src/
+│   ├── components/         # Componentes reutilizables (PostCard, etc.)
+│   ├── content/            # Colecciones de contenido Markdown (bio, work, projects, news)
+│   ├── layouts/            # Layout principal (Layout.astro, navegación, footer, modo oscuro)
+│   ├── pages/              # Enrutamiento estático y páginas dinámicas
+│   └── styles/             # Variables CSS globales y tipografía
+├── astro.config.mjs        # Configuración principal de Astro y plugins
+└── package.json            # Dependencias y scripts del proyecto
 ```
 
-Visit `http://localhost:4321` to see your site in action! 🎉
-
 ---
 
-## 📦 Installation
+## 💻 Desarrollo Local
 
-### 1. Install Dependencies
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Perez-From-Hell/vicente.photo.git
+cd vicente.photo
+```
+
+### 2. Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### 2. Start Development Server
+### 3. Iniciar el servidor de desarrollo
 
 ```bash
 npm run dev
 ```
 
-Your site will be running at `http://localhost:4321`
+Abre [http://localhost:4321](http://localhost:4321) en tu navegador para ver el resultado.
 
-### 3. Build for Production
-
-```bash
-npm run build
-```
-
-The output will be in the `dist/` directory, ready for deployment.
-
----
-
-## 🛠️ Tech Stack
-
-- **[Astro](https://astro.build)** - Static Site Generator
-- **[Decap CMS](https://decapcms.org/)** - Headless CMS
-- **[PostCSS](https://postcss.org/)** - CSS Processing
-- **TypeScript** - Type Safety
-- **Markdown/MDX** - Content Management
-
----
-
-## 📁 Project Structure
-
-```text
-/
-├── public/                 # Static assets (images, admin config)
-│   ├── admin/              # Decap CMS configuration
-│   └── img/                # Uploaded images
-├── src/
-│   ├── components/         # Reusable Astro components (PostCard, etc.)
-│   ├── content/            # Content Collections (Markdown/MDX)
-│   │   ├── news/           # News/blog posts
-│   │   ├── pages/          # Static pages
-│   │   ├── sold/           # Sold items (for artists)
-│   │   └── work/           # Portfolio work items
-│   ├── layouts/            # Main layouts (Layout.astro)
-│   ├── pages/              # Route definitions
-│   │   ├── index.astro     # Home page
-│   │   ├── [...slug].astro # Dynamic route for generic pages
-│   │   └── work/[slug].astro # Dynamic routes for collections
-│   ├── styles/             # Global variables and resets
-│   │   ├── content.css     # Typography for markdown content
-│   │   └── vars.css        # CSS Variables (Colors, Fonts)
-│   └── templates/          # Templates for different content types
-├── astro.config.mjs        # Astro configuration
-├── postcss.config.cjs      # PostCSS configuration
-└── tsconfig.json           # TypeScript configuration
-```
-
----
-
-## 🎨 Customization
-
-### Fonts & Colors
-
-Edit `src/styles/vars.css` to update CSS variables for colors, fonts, and breakpoints:
-
-```css
-:root {
-  --color-primary: #3eb0ef;
-  --color-base: #131313;
-  --font-serif: 'EB Garamond', Georgia, Times, serif;
-  /* ... more variables */
-}
-```
-
-### Content Management
-
-- **Option 1**: Add markdown files directly to `src/content/` folders
-- **Option 2**: Use the Admin panel at `/admin` (requires local backend or Netlify deployment)
-
-### Navigation
-
-Edit the `<nav>` section in `src/layouts/Layout.astro` to customize menu links.
-
----
-
-## 🚀 Deployment
-
-### Deploy to Netlify
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
-
-### Deploy to Vercel
+### 4. Compilar para producción
 
 ```bash
 npm run build
-# Upload dist/ folder to Vercel
 ```
 
----
-
-## 📝 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+El resultado listo para desplegar se generará en la carpeta `dist/`.
 
 ---
 
-## 🙏 Credits
+## 🚀 Despliegue
 
-- **Original Theme**: [Clay Theme](https://github.com/lilxyzz/clay-theme) by `lilxyzz`
-- **Framework**: [Astro](https://astro.build)
-- **CMS**: [Decap CMS](https://decapcms.org/)
+El despliegue está 100% automatizado. Cada vez que se hace un `push` a la rama `main`, GitHub Actions ejecuta el flujo definido en `.github/workflows/deploy.yml`:
+1. Descarga el código y las dependencias.
+2. Compila el sitio con Astro (`npm run build`).
+3. Publica automáticamente el resultado en GitHub Pages bajo el dominio `https://vicente.photo`.
 
-<p align="center">Made with ❤️ using Astro</p>
+---
+
+## 📄 Licencia
+
+Código publicado bajo la licencia **MIT** - consulta el archivo [LICENSE](LICENSE) para más detalles.
+Fotografías y textos propiedad de **Vicente Pérez Robles**. Todos los derechos reservados.
