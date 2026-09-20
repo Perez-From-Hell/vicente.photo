@@ -1,14 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Se ejecuta únicamente cuando una Pull Request hacia 'main' se cierra (mergeada)
   pull_request:
-    types: [closed]
     branches:
       - main
-
-  # Permite también ejecutar el despliegue manualmente si alguna vez lo necesitas
-  workflow_dispatch:
+    types: [opened, synchronize, reopened, closed]
 
 permissions:
   contents: read
@@ -21,11 +17,16 @@ concurrency:
 
 jobs:
   build:
-    # Solo ejecuta si fue una PR mergeada exitosamente o si se ejecutó manualmente
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    # Se ejecuta al abrir/actualizar una PR (para validar que compila) o cuando la PR se mergea en main
+    if: github.event.action != 'closed' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR head
+        if: github.event.action != 'closed'
+        uses: actions/checkout@v4
+
+      - name: Checkout main for deployment
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true
         uses: actions/checkout@v4
         with:
           ref: main
@@ -35,7 +36,8 @@ jobs:
 
   deploy:
     needs: build
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    # Solo despliega a producción cuando la PR ha sido formalmente mergeada en main
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -103,11 +103,9 @@ El resultado listo para desplegar se generará en la carpeta `dist/`.
 
 ## 🚀 Despliegue
 
-El despliegue está automatizado. Cada vez que se fusiona (merge) una **Pull Request** hacia la rama `main`, GitHub Actions ejecuta el flujo definido en `.github/workflows/deploy.yml`:
-1. Descarga el código y las dependencias.
-2. Compila el sitio con Astro (`npm run build`).
-3. Publica automáticamente el resultado en GitHub Pages bajo el dominio `https://vicente.photo`.
-*(También puede dispararse manualmente desde la pestaña Actions en GitHub).*
+El flujo de integración y despliegue continuo (CI/CD) está automatizado en `.github/workflows/deploy.yml`:
+1. **Al abrir o actualizar una Pull Request hacia `main`**: Se compila el proyecto para validar automáticamente que la compilación pase y no introduzca errores.
+2. **Al fusionar (merge) la Pull Request en `main`**: Se compila la rama `main` y se publica automáticamente el resultado en GitHub Pages bajo el dominio `https://vicente.photo`.
 
 ---
 
