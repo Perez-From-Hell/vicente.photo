@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import WorkTemplate from '../../templates/Work.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('news');
+  const entries = await getCollection('news', entry => entry.slug.startsWith('es/'));
   const sortedEntries = entries.sort((a, b) => {
     return new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
   });
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     const older = index === sortedEntries.length - 1 ? null : sortedEntries[index + 1];
 
     return {
-      params: { slug: entry.slug },
+      params: { slug: entry.slug.replace(/^es\//, '') },
       props: {
         entry,
         next: newer,

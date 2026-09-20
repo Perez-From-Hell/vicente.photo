@@ -1,17 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
-import Page from '../templates/Page.astro';
-import Contact from '../templates/Contact.astro';
-import List from '../templates/List.astro';
-// import Elements from '../templates/Elements.astro';
+import Page from '../../templates/Page.astro';
+import Contact from '../../templates/Contact.astro';
+import List from '../../templates/List.astro';
 
 export async function getStaticPaths() {
-  const pages = await getCollection('pages', entry => entry.slug.startsWith('es/'));
+  const pages = await getCollection('pages', entry => entry.slug.startsWith('en/'));
 
   // Pre-fetch other collections for index pages
-  const newsEntries = await getCollection('news', entry => entry.slug.startsWith('es/'));
-  const workEntries = await getCollection('work', entry => entry.slug.startsWith('es/'));
-  const soldEntries = await getCollection('sold', entry => entry.slug.startsWith('es/'));
+  const newsEntries = await getCollection('news', entry => entry.slug.startsWith('en/'));
+  const workEntries = await getCollection('work', entry => entry.slug.startsWith('en/'));
+  const soldEntries = await getCollection('sold', entry => entry.slug.startsWith('en/'));
 
   // Sort them
   const sortDate = (a, b) => new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
@@ -20,9 +19,8 @@ export async function getStaticPaths() {
   const sortedSold = soldEntries.sort(sortDate);
 
   return pages
-    .filter(entry => entry.slug !== 'es/index')
+    .filter(entry => entry.slug !== 'en/index')
     .map(entry => {
-      // Determine props based on templateKey
       let props = { entry };
       let items = [];
       let baseSlug = '';
@@ -33,12 +31,12 @@ export async function getStaticPaths() {
       } else if (entry.data.templateKey === 'work-page') {
           items = sortedWork;
           baseSlug = 'work';
-      } else if (entry.data.templateKey === 'exhibitions-page') { // maps to sold collection
+      } else if (entry.data.templateKey === 'exhibitions-page') {
           items = sortedSold;
           baseSlug = 'sold';
       }
 
-      const slug = entry.slug.replace(/^es\//, '');
+      const slug = entry.slug.replace(/^en\//, '');
 
       return {
         params: { slug },
@@ -46,7 +44,6 @@ export async function getStaticPaths() {
       };
     });
 }
-
 
 const { entry, items, baseSlug } = Astro.props;
 const templateKey = entry.data.templateKey;

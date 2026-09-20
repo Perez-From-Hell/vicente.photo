@@ -1,13 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PostCard from '../components/PostCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
-// Fetch all collections for Spanish
-const allPages = await getCollection('pages', entry => entry.slug.startsWith('es/'));
-const allNews = await getCollection('news', entry => entry.slug.startsWith('es/'));
-const allWork = await getCollection('work', entry => entry.slug.startsWith('es/'));
-const allSold = await getCollection('sold', entry => entry.slug.startsWith('es/'));
+// Fetch all collections for English
+const allPages = await getCollection('pages', entry => entry.slug.startsWith('en/'));
+const allNews = await getCollection('news', entry => entry.slug.startsWith('en/'));
+const allWork = await getCollection('work', entry => entry.slug.startsWith('en/'));
+const allSold = await getCollection('sold', entry => entry.slug.startsWith('en/'));
 
 // Combine for filtering
 const allContent = [...allPages, ...allNews, ...allWork, ...allSold];
@@ -22,18 +22,18 @@ const posts = allContent.filter(item => {
 });
 
 // Get index-page metadata (from pages collection)
-const indexPage = allPages.find(p => p.slug === 'es/index');
+const indexPage = allPages.find(p => p.slug === 'en/index');
 const title = indexPage?.data.title || 'VICENTE PEREZ ROBLES';
 const description = indexPage?.data.description;
 
 let postCounter = 0;
 ---
 
-<Layout title={title} description={description} lang="es">
+<Layout title={title} description={description} lang="en">
     <div class="post-feed">
         {posts.map((post) => {
             postCounter++;
-            const cleanSlug = post.slug.replace(/^es\//, '');
+            const cleanSlug = post.slug.replace(/^en\//, '');
             let slug = cleanSlug;
             if (post.collection === 'work') slug = `work/${cleanSlug}`;
             if (post.collection === 'news') slug = `news/${cleanSlug}`;

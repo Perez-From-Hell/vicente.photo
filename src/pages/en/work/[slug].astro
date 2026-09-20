@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import WorkTemplate from '../../templates/Work.astro';
+import WorkTemplate from '../../../templates/Work.astro';
 
 export async function getStaticPaths() {
-  const workEntries = await getCollection('work', entry => entry.slug.startsWith('es/'));
+  const workEntries = await getCollection('work', entry => entry.slug.startsWith('en/'));
 
   const sortedEntries = workEntries.sort((a, b) => {
     return new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     const older = index === sortedEntries.length - 1 ? null : sortedEntries[index + 1];
 
     return {
-      params: { slug: entry.slug.replace(/^es\//, '') },
+      params: { slug: entry.slug.replace(/^en\//, '') },
       props: {
         entry,
         next: newer, // Left

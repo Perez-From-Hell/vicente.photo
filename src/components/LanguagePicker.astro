@@ -1,0 +1,66 @@
+---
+import { getLangFromUrl, getSwitchLanguageUrl } from '../i18n/utils';
+
+const currentUrl = Astro.url;
+const currentLang = getLangFromUrl(currentUrl);
+
+const esUrl = getSwitchLanguageUrl(currentUrl, 'es');
+const enUrl = getSwitchLanguageUrl(currentUrl, 'en');
+---
+
+<div class="lang-picker" role="group" aria-label="Language selector">
+  <a
+    href={esUrl}
+    class={`lang-link ${currentLang === 'es' ? 'active' : ''}`}
+    aria-label="Versión en español"
+    aria-current={currentLang === 'es' ? 'page' : undefined}
+  >
+    ES
+  </a>
+  <span class="lang-divider">/</span>
+  <a
+    href={enUrl}
+    class={`lang-link ${currentLang === 'en' ? 'active' : ''}`}
+    aria-label="English version"
+    aria-current={currentLang === 'en' ? 'page' : undefined}
+  >
+    EN
+  </a>
+</div>
+
+<style>
+  .lang-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    user-select: none;
+  }
+
+  .lang-link {
+    color: var(--color-base, #738a94);
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    font-family: var(--font-sans-serif, sans-serif);
+  }
+
+  .lang-link:hover {
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  .lang-link.active {
+    opacity: 1;
+    font-weight: 700;
+    color: var(--color-base, #15171a);
+  }
+
+  .lang-divider {
+    opacity: 0.3;
+    font-size: 1.1rem;
+    color: var(--color-base, #738a94);
+  }
+</style>

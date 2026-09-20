@@ -5,20 +5,27 @@ import '../styles/content.css'; /* Importing remaining global content styles */
 // Importing here ensures they are included.
 
 import { ClientRouter } from 'astro:transitions';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
 
 // Migrating logic from src/components/layout.js
 export interface Props {
 	title?: string;
     description?: string;
+    lang?: Lang;
     children?: any;
 }
 
 const { title, description } = Astro.props;
+const currentLang = Astro.props.lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const translatePath = useTranslatedPath(currentLang);
 
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={currentLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description || "VICENTE PEREZ ROBLES"} />
@@ -55,30 +62,31 @@ const { title, description } = Astro.props;
                 <nav id="swup" class="site-head-left">
                     <ul class="nav" role="menu">
                         <li class="nav-home" role="menuitem">
-                            <a href="/">Home</a>
+                            <a href={translatePath('/')}>{t('nav.home')}</a>
                         </li>
                         <li class="nav-home" role="menuitem">
-                            <a href="/bio">Bio</a>
+                            <a href={translatePath('/bio')}>{t('nav.bio')}</a>
                         </li>
                         <li class="nav-home" role="menuitem">
-                            <a href="/work">Work</a>
+                            <a href={translatePath('/work')}>{t('nav.work')}</a>
                         </li>
                         <li class="nav-home" role="menuitem">
-                            <a href="/project">Project</a>
+                            <a href={translatePath('/project')}>{t('nav.project')}</a>
                         </li>
                         <li class="nav-home" role="menuitem">
-                            <a href="/contact">Contact</a>
+                            <a href={translatePath('/contact')}>{t('nav.contact')}</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="site-head-center">
-                    <a class="site-head-logo" href="/">
+                    <a class="site-head-logo" href={translatePath('/')}>
                         {title || "VICENTE PEREZ ROBLES"}
                     </a>
                 </div>
                 <div class="site-head-right">
                     <div class="social-links">
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <LanguagePicker />
+                        <button id="theme-toggle" class="theme-toggle" aria-label={t('theme.toggle')}>
                             <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                             <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                         </button>
@@ -94,10 +102,10 @@ const { title, description } = Astro.props;
         </main>
 
         <footer class="site-foot">
-            <div>&copy; {new Date().getFullYear()} <a href="/">VICENTE PEREZ ROBLES</a></div>
+            <div>&copy; {new Date().getFullYear()} <a href={translatePath('/')}>VICENTE PEREZ ROBLES</a></div>
             <div>
-                Powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> |
-                Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a>
+                {t('footer.powered')} <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> |
+                {t('footer.licensed')} <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a>
             </div>
         </footer>
 

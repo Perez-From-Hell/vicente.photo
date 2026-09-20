@@ -1,11 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import WorkTemplate from '../../templates/Work.astro';
+import WorkTemplate from '../../../templates/Work.astro';
 
 export async function getStaticPaths() {
-  const workEntries = await getCollection('work', entry => entry.slug.startsWith('es/'));
-
-  const sortedEntries = workEntries.sort((a, b) => {
+  const entries = await getCollection('sold', entry => entry.slug.startsWith('en/'));
+  const sortedEntries = entries.sort((a, b) => {
     return new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
   });
 
@@ -14,11 +13,11 @@ export async function getStaticPaths() {
     const older = index === sortedEntries.length - 1 ? null : sortedEntries[index + 1];
 
     return {
-      params: { slug: entry.slug.replace(/^es\//, '') },
+      params: { slug: entry.slug.replace(/^en\//, '') },
       props: {
         entry,
-        next: newer, // Left
-        prev: older, // Right
+        next: newer,
+        prev: older,
       },
     };
   });
@@ -27,4 +26,4 @@ export async function getStaticPaths() {
 const { entry, next, prev } = Astro.props;
 ---
 
-<WorkTemplate entry={entry} next={next} prev={prev} baseSlug="work" />
+<WorkTemplate entry={entry} next={next} prev={prev} baseSlug="sold" />

@@ -1,0 +1,67 @@
+export const languages = {
+  es: 'ES',
+  en: 'EN',
+} as const;
+
+export type Lang = keyof typeof languages;
+
+export const defaultLang: Lang = 'es';
+
+export const ui = {
+  es: {
+    'nav.home': 'Inicio',
+    'nav.bio': 'Biografía',
+    'nav.work': 'Obra',
+    'nav.project': 'Proyectos',
+    'nav.contact': 'Contacto',
+    'theme.toggle': 'Cambiar tema claro/oscuro',
+    'contact.form': 'Formulario',
+    'contact.firstName': 'Nombre',
+    'contact.lastName': 'Apellidos',
+    'contact.email': 'Correo electrónico',
+    'contact.location': 'Ubicación',
+    'contact.enquiry': '-Tipo de consulta-',
+    'contact.enquiry.general': 'General',
+    'contact.enquiry.purchase': 'Compra de obra',
+    'contact.enquiry.commissions': 'Encargos',
+    'contact.enquiry.exhibitions': 'Exposiciones',
+    'contact.enquiry.gallery': 'Colaboración / Galería',
+    'contact.enquiry.other': 'Otro',
+    'contact.message': 'Escribe tu mensaje',
+    'contact.send': 'Enviar mensaje',
+    'thanks.title': '¡Muchas gracias!',
+    'thanks.received': 'Tu mensaje ha sido recibido con éxito.',
+    'thanks.back': 'Volver al inicio',
+    'footer.powered': 'Desarrollado con',
+    'footer.licensed': 'Bajo licencia',
+  },
+  en: {
+    'nav.home': 'Home',
+    'nav.bio': 'Bio',
+    'nav.work': 'Work',
+    'nav.project': 'Project',
+    'nav.contact': 'Contact',
+    'theme.toggle': 'Toggle Dark Mode',
+    'contact.form': 'Form',
+    'contact.firstName': 'First Name',
+    'contact.lastName': 'Last Name',
+    'contact.email': 'Email',
+    'contact.location': 'Location',
+    'contact.enquiry': '-Nature of Enquiry-',
+    'contact.enquiry.general': 'General',
+    'contact.enquiry.purchase': 'Purchase',
+    'contact.enquiry.commissions': 'Commissions',
+    'contact.enquiry.exhibitions': 'Exhibitions',
+    'contact.enquiry.gallery': 'Gallery Feature',
+    'contact.enquiry.other': 'Other',
+    'contact.message': 'Enter your message',
+    'contact.send': 'Send Message',
+    'thanks.title': 'Thank You!',
+    'thanks.received': 'Your submission has been received.',
+    'thanks.back': 'Back to Home',
+    'footer.powered': 'Powered by',
+    'footer.licensed': 'Licensed under',
+  },
+} as const;
+
+export type UIKey = keyof typeof ui[typeof defaultLang];

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { type CollectionEntry } from 'astro:content';
+import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
@@ -10,13 +11,11 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const { title, description, thumbnail } = entry.data;
-
-// Image handling: thumbnail is string path to /public/img/...
-// In Astro, if it is in public, just use the path.
-// If imported, use Image component. Legacy used string paths in frontmatter.
+const currentLang = getLangFromUrl(Astro.url);
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} lang={currentLang}>
+
   <article class={`post-content ${thumbnail ? '' : 'no-image'}`}>
     {/* Title and description hidden
     <header class="post-content-header">

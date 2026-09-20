@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { type CollectionEntry } from 'astro:content';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
@@ -11,11 +12,15 @@ const { Content } = await entry.render();
 
 const { title, description, thumbnail } = entry.data;
 
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const translatePath = useTranslatedPath(currentLang);
+
 // Porting the form HTML.
 // Using standard Netlify form submission (no JS hijack required for basic functionality).
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} lang={currentLang}>
   <article class="contact-form page-template">
     {thumbnail && (
       <div class="post-content-image">
@@ -26,8 +31,8 @@ const { title, description, thumbnail } = entry.data;
     <div class="post-content-body">
       <Content />
 
-      <h3 id="forms">Form</h3>
-      <form name="contact" method="POST" data-netlify="true" action="/contact/thanks">
+      <h3 id="forms">{t('contact.form')}</h3>
+      <form name="contact" method="POST" data-netlify="true" action={translatePath('/contact/thanks')}>
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
            <label>Don’t fill this out: <input name="bot-field" /></label>
@@ -35,33 +40,33 @@ const { title, description, thumbnail } = entry.data;
 
         <div class="row gtr-uniform">
           <div class="col-6 col-12-xsmall">
-            <input type="text" name="first-name" id="first-name" placeholder="First Name" required />
+            <input type="text" name="first-name" id="first-name" placeholder={t('contact.firstName')} required />
           </div>
           <div class="col-6 col-12-xsmall">
-            <input type="text" name="last-name" id="last-name" placeholder="Last Name" required />
+            <input type="text" name="last-name" id="last-name" placeholder={t('contact.lastName')} required />
           </div>
 
           <div class="col-6 col-12-xsmall">
-            <input type="email" name="email" id="demo-email" placeholder="Email" required />
+            <input type="email" name="email" id="demo-email" placeholder={t('contact.email')} required />
           </div>
           <div class="col-6 col-12-xsmall">
-            <input type="text" name="location" id="location" placeholder="Location" required />
+            <input type="text" name="location" id="location" placeholder={t('contact.location')} required />
           </div>
 
           <div class="col-12">
             <select name="category" id="category" required>
-              <option value="">-Nature of Enquiry-</option>
-              <option value="General">General</option>
-              <option value="Purchase">Purchase</option>
-              <option value="Commissions">Commissions</option>
-              <option value="Exhibitions">Exhibitions</option>
-              <option value="Gallery Feature">Gallery Feature</option>
-              <option value="Other">Other</option>
+              <option value="">{t('contact.enquiry')}</option>
+              <option value="General">{t('contact.enquiry.general')}</option>
+              <option value="Purchase">{t('contact.enquiry.purchase')}</option>
+              <option value="Commissions">{t('contact.enquiry.commissions')}</option>
+              <option value="Exhibitions">{t('contact.enquiry.exhibitions')}</option>
+              <option value="Gallery Feature">{t('contact.enquiry.gallery')}</option>
+              <option value="Other">{t('contact.enquiry.other')}</option>
             </select>
           </div>
 
           <div class="col-12">
-            <textarea name="message" id="message" placeholder="Enter your message" rows="6" required></textarea>
+            <textarea name="message" id="message" placeholder={t('contact.message')} rows="6" required></textarea>
           </div>
 
           <div data-netlify-recaptcha="true"></div>
@@ -69,7 +74,7 @@ const { title, description, thumbnail } = entry.data;
           <div class="col-12">
             <ul class="actions">
               <li>
-                <input type="submit" value="Send Message" class="primary" />
+                <input type="submit" value={t('contact.send')} class="primary" />
               </li>
             </ul>
           </div>
@@ -78,3 +83,4 @@ const { title, description, thumbnail } = entry.data;
     </div>
   </article>
 </Layout>
+
