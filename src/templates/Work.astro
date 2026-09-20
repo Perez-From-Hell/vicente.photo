@@ -26,11 +26,11 @@ const getEntryPath = (e: any) => {
 
 <Layout title={title} description={description} lang={currentLang}>
   <article class={`post-content ${thumbnail ? '' : 'no-image'}`}>
-    {/* Title hidden as it is shown in the header now
-    <header class="post-content-header">
-      <h1 class="post-content-title">{title}</h1>
-    </header>
-    */}
+    {title && (
+      <header class="post-content-header" style="text-align: center; margin-bottom: 2rem;">
+        <h1 class="post-content-title" style="font-size: 3.4rem; font-weight: 400; margin-bottom: 0.5rem;">{title}</h1>
+      </header>
+    )}
 
     {description && (
       <p class="post-content-excerpt">{description}</p>

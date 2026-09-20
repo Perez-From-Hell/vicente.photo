@@ -1,0 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+import Page from '../../../templates/Page.astro';
+
+const entry = await getEntry('pages', 'en/work-model');
+if (!entry) throw new Error('Entry en/work-model not found');
+---
+
+<Page entry={entry} />

@@ -32,7 +32,7 @@ const translatePath = useTranslatedPath(currentLang);
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title || "VICENTE PEREZ ROBLES"}</title>
+		<title>{title && title !== "VICENTE PEREZ ROBLES" ? `${title} | VICENTE PEREZ ROBLES` : "VICENTE PEREZ ROBLES"}</title>
         <ClientRouter />
         <script is:inline>
             // Theme init
@@ -67,8 +67,21 @@ const translatePath = useTranslatedPath(currentLang);
                         <li class="nav-home" role="menuitem">
                             <a href={translatePath('/bio')}>{t('nav.bio')}</a>
                         </li>
-                        <li class="nav-home" role="menuitem">
-                            <a href={translatePath('/work')}>{t('nav.work')}</a>
+                        <li class="nav-home has-dropdown" role="menuitem">
+                            <a href={translatePath('/work')} class="nav-link-dropdown">
+                                {t('nav.work')}
+                                <svg class="dropdown-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    <a href={translatePath('/work/photographer')}>{t('nav.work.photographer')}</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a href={translatePath('/work/model')}>{t('nav.work.model')}</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-home" role="menuitem">
                             <a href={translatePath('/project')}>{t('nav.project')}</a>
@@ -80,7 +93,7 @@ const translatePath = useTranslatedPath(currentLang);
                 </nav>
                 <div class="site-head-center">
                     <a class="site-head-logo" href={translatePath('/')}>
-                        {title || "VICENTE PEREZ ROBLES"}
+                        VICENTE PEREZ ROBLES
                     </a>
                 </div>
                 <div class="site-head-right">
@@ -287,8 +300,8 @@ const translatePath = useTranslatedPath(currentLang);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 13vw 0;
-        max-width: 70%;
+        padding: 4rem 0 2rem;
+        max-width: 80%;
         margin: auto;
         text-align: center;
     }
@@ -384,11 +397,11 @@ const translatePath = useTranslatedPath(currentLang);
     .site-head-right a {
         display: block;
         margin: 0;
-        padding: 10px 12px;
+        padding: 8px 10px;
         color: var(--color-base);
         font-family: var(--font-sans-serif);
         font-weight: 400;
-        font-size: 1.8rem; /* Increased size again */
+        font-size: 1.6rem;
         text-transform: lowercase;
         font-variant: small-caps;
         letter-spacing: 1px;
@@ -401,24 +414,89 @@ const translatePath = useTranslatedPath(currentLang);
         opacity: 1;
     }
 
-    .site-head-center {
+    /* Dropdown Submenu */
+    .has-dropdown {
+        position: relative;
+    }
+
+    .nav-link-dropdown {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .dropdown-icon {
+        transition: transform 0.2s ease;
+        opacity: 0.6;
+    }
+
+    .has-dropdown:hover .dropdown-icon {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+        display: none;
         position: absolute;
-        display: flex;
-        justify-content: center;
+        top: 100%;
+        left: 0;
+        min-width: 190px;
+        background: var(--color-bg);
+        border: 1px solid rgba(125, 125, 125, 0.2);
+        border-radius: 8px;
+        padding: 6px 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+    }
+
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown:focus-within .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
         width: 100%;
     }
 
+    .dropdown-menu a {
+        padding: 8px 16px !important;
+        font-size: 1.5rem !important;
+        white-space: nowrap;
+        opacity: 0.7 !important;
+        transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+        opacity: 1 !important;
+        background: rgba(125, 125, 125, 0.08);
+    }
+
+
+    .site-head-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        white-space: nowrap;
+        pointer-events: none;
+    }
+
     .site-head-logo {
+        pointer-events: auto;
         font-family: var(--font-sans-serif);
         flex-shrink: 0;
         display: block;
-        padding: 10px;
+        padding: 8px 12px;
         color: var(--color-base);
-        font-size: 3rem;
+        font-size: 2.2rem;
         line-height: 1em;
         font-weight: 500;
         text-transform: uppercase;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
+        white-space: nowrap;
     }
 
     .site-head-logo:hover {
@@ -455,7 +533,7 @@ const translatePath = useTranslatedPath(currentLang);
         padding: 12px 12px 12px 12px;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 1024px) {
         .site-head {
             padding: 0;
         }
@@ -574,6 +652,31 @@ const translatePath = useTranslatedPath(currentLang);
             bottom: 0;
             transition: transform 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
             transform: translateY(-4vw);
+        }
+
+        .has-dropdown {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            position: static;
+            display: block;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            padding: 0 0 0 16px;
+            margin: 0;
+            backdrop-filter: none;
+        }
+
+        .dropdown-menu a {
+            padding: 6px 12px !important;
+            font-size: 1.6rem !important;
+            opacity: 0.7 !important;
+        }
+
+        .dropdown-icon {
+            display: none;
         }
     }
 </style>
