@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
 export interface Props {
   count: number;
   post: any; // using any for now, better to use CollectionEntry
@@ -10,13 +12,19 @@ const thumbnail = post.data.thumbnail;
 const title = post.data.title;
 const isLarge = count % 3 === 0;
 
+const currentLang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(currentLang);
+
+const cleanSlug = slug.replace(/^(es|en)\//, '');
+const href = translatePath(`/${cleanSlug}`);
+
 // Construct background image style
 const bgStyle = thumbnail ? `background-image: url(${thumbnail});` : '';
 const postClass = `post-card ${isLarge ? 'post-card-large' : ''} ${thumbnail ? 'with-image' : 'no-image'} post`;
 ---
 
 <article class={postClass} style={bgStyle}>
-  <a href={`/${slug}`} class="post-card-link">
+  <a href={href} class="post-card-link">
     <div class="post-card-content">
       <h2 class="post-card-title">
         {title}
@@ -24,6 +32,7 @@ const postClass = `post-card ${isLarge ? 'post-card-large' : ''} ${thumbnail ? '
     </div>
   </a>
 </article>
+
 
 <style>
 /* Post Feed */

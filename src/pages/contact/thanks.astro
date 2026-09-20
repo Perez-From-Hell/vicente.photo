@@ -1,14 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const translatePath = useTranslatedPath(currentLang);
 ---
 
-<Layout title="Thank You">
+<Layout title={t('thanks.title')} lang={currentLang}>
   <article class="post-content page-template no-image">
     <div class="post-content-body">
-      <div class="thank-you" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-         <h1>Thank you!</h1>
-         <p>Your submission has been received.</p>
-         <p><a href="/">Back to Home</a></p>
+      <div class="thank-you" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4rem 1rem;">
+         <h1 style="margin-bottom: 1rem;">{t('thanks.title')}</h1>
+         <p style="font-size: 1.8rem; margin-bottom: 2rem;">{t('thanks.received')}</p>
+         <p><a href={translatePath('/')} style="text-decoration: underline; font-weight: 500;">{t('thanks.back')}</a></p>
       </div>
     </div>
   </article>

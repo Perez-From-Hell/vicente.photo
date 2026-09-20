@@ -6,5 +6,12 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://vicente.photo',
+    i18n: {
+        defaultLocale: 'es',
+        locales: ['es', 'en'],
+        routing: {
+            prefixDefault: false,
+        },
+    },
     integrations: [react(), sitemap()],
 });

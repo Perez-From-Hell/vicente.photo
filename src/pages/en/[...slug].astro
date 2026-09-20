@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../templates/Page.astro';
+import Contact from '../../templates/Contact.astro';
+import List from '../../templates/List.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages', entry => entry.slug.startsWith('en/'));
+
+  // Pre-fetch other collections for index pages
+  const newsEntries = await getCollection('news', entry => entry.slug.startsWith('en/'));
+  const workEntries = await getCollection('work', entry => entry.slug.startsWith('en/'));
+  const soldEntries = await getCollection('sold', entry => entry.slug.startsWith('en/'));
+
+  // Sort them
+  const sortDate = (a, b) => new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
+  const sortedNews = newsEntries.sort(sortDate);
+  const sortedWork = workEntries.sort(sortDate);
+  const sortedSold = soldEntries.sort(sortDate);
+
+  return pages
+    .filter(entry => entry.slug !== 'en/index')
+    .map(entry => {
+      let props = { entry };
+      let items = [];
+      let baseSlug = '';
+
+      if (entry.data.templateKey === 'news-page') {
+          items = sortedNews;
+          baseSlug = 'news';
+      } else if (entry.data.templateKey === 'work-page') {
+          items = sortedWork;
+          baseSlug = 'work';
+      } else if (entry.data.templateKey === 'exhibitions-page') {
+          items = sortedSold;
+          baseSlug = 'sold';
+      }
+
+      const slug = entry.slug.replace(/^en\//, '');
+
+      return {
+        params: { slug },
+        props: { ...props, items, baseSlug },
+      };
+    });
+}
+
+const { entry, items, baseSlug } = Astro.props;
+const templateKey = entry.data.templateKey;
+---
+
+{templateKey === 'contact-page' ? (
+    <Contact entry={entry} />
+) : templateKey === 'news-page' || templateKey === 'work-page' || templateKey === 'exhibitions-page' ? (
+    <List entry={entry} items={items} baseSlug={baseSlug} />
+) : (
+    <Page entry={entry} />
+)}

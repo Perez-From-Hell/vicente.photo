@@ -3,11 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
-// Fetch all collections
-const allPages = await getCollection('pages');
-const allNews = await getCollection('news');
-const allWork = await getCollection('work');
-const allSold = await getCollection('sold');
+// Fetch all collections for Spanish
+const allPages = await getCollection('pages', entry => entry.slug.startsWith('es/'));
+const allNews = await getCollection('news', entry => entry.slug.startsWith('es/'));
+const allWork = await getCollection('work', entry => entry.slug.startsWith('es/'));
+const allSold = await getCollection('sold', entry => entry.slug.startsWith('es/'));
 
 // Combine for filtering
 const allContent = [...allPages, ...allNews, ...allWork, ...allSold];
@@ -22,33 +22,22 @@ const posts = allContent.filter(item => {
 });
 
 // Get index-page metadata (from pages collection)
-const indexPage = allPages.find(p => p.slug === 'index');
+const indexPage = allPages.find(p => p.slug === 'es/index');
 const title = indexPage?.data.title || 'VICENTE PEREZ ROBLES';
 const description = indexPage?.data.description;
 
 let postCounter = 0;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} lang="es">
     <div class="post-feed">
         {posts.map((post) => {
             postCounter++;
-            // Calculate slug. If it's from 'pages', slug is just slug (or flattened).
-            // content/pages/bio.md -> slug 'bio'.
-            // content/work/work-1.md -> slug 'work-1'? No, in config.ts, work collection.
-            // But legacy mapped work/work-1.md -> /work/work-1
-            // My [...slug].astro will handle mapping.
-            // Here I need to generate the same link.
-
-            let slug = post.slug;
-            if (post.collection === 'work') slug = `work/${post.slug}`;
-            if (post.collection === 'news') slug = `news/${post.slug}`;
-            if (post.collection === 'sold') slug = `sold/${post.slug}`;
-            // Pages collection: 'bio' -> 'bio'.
-
-            // Wait, legacy slug split logic:
-            // src/pages/bio/index.md -> /bio.
-            // content/work/work-1.md -> /work/work-1.
+            const cleanSlug = post.slug.replace(/^es\//, '');
+            let slug = cleanSlug;
+            if (post.collection === 'work') slug = `work/${cleanSlug}`;
+            if (post.collection === 'news') slug = `news/${cleanSlug}`;
+            if (post.collection === 'sold') slug = `sold/${cleanSlug}`;
 
             return (
                 <PostCard
