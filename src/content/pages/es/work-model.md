@@ -1,10 +1,10 @@
 ---
 templateKey: page
 title: Trabajos como Modelo
-thumbnail: /img/_DSC1747.png
+thumbnail: /img/202101-book-we-lovemodels-000.jpg
 description: Portafolio de sesiones de moda, campañas comerciales y editoriales como modelo.
 number: 2
-featuredimage: /img/_DSC1747.png
+featuredimage: /img/202101-book-we-lovemodels-000.jpg
 ---
 
 ## Trayectoria y Modelaje
@@ -13,24 +13,48 @@ Como modelo profesional me enfoco en la versatilidad, la presencia escénica y l
 
 ---
 
-### 1. Book en We Love Models
-Sesión de registro y presentación para la agencia **We Love Models**, orientada a conformar un book profesional versátil y contemporáneo.
+### 1. Book en We Love Models (2021)
+Sesión de registro y presentación para la agencia **We Love Models (Chile)**, orientada a conformar un book profesional versátil y contemporáneo.
 
-![Book en We Love Models](/img/_DSC1747.png)
-*Sesión de estudio y registro de perfil para We Love Models.*
+![Book en We Love Models](/img/202101-book-we-lovemodels-001.jpg)
 
----
+![Book en We Love Models](/img/202101-book-we-lovemodels-002.jpg)
 
-### 2. Campaña Mall Plaza
-Participación en campaña comercial y editorial para **Mall Plaza**, orientada a moda retail y lifestyle contemporáneo.
+![Book en We Love Models](/img/202101-book-we-lovemodels-003.jpg)
 
-![Campaña Mall Plaza](/img/_DSC1258.PNG)
-*Campaña comercial y de moda para Mall Plaza.*
+![Book en We Love Models](/img/202101-book-we-lovemodels-004.jpg)
 
 ---
 
-### 3. Editorial Nostalgic
-Colaboración de moda y concepto retro para la marca **Nostalgic**, explorando la estética vintage y urbana.
+### 2. Campaña Mall Plaza (2021)
+Participación en campaña comercial y editorial para **Mall Plaza (Chile)**, orientada a moda retail y lifestyle contemporáneo.
 
-![Editorial Nostalgic](/img/_DSC2582.jpg)
-*Editorial de moda vintage y estética urbana para Nostalgic.*
+![Campaña Mall Plaza](/img/202106-mall-plaza-001.jpeg)
+
+![Campaña Mall Plaza](/img/202106-mall-plaza-002.jpeg)
+
+![Campaña Mall Plaza](/img/202106-mall-plaza-003.jpeg)
+
+---
+
+### 3. Editorial Nostalgic (2021)
+Colaboración de moda y concepto retro para la marca **Nostalgic (Chile)**, explorando la estética vintage y urbana.
+
+![Editorial Nostalgic](/img/202106-nostalgic-001.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-002.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-003.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-004.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-005.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-006.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-007.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-008.jpg)
+
+![Editorial Nostalgic](/img/202106-nostalgic-009.jpg)
+

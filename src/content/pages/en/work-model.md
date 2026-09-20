@@ -1,10 +1,10 @@
 ---
 templateKey: page
 title: Work as Model
-thumbnail: /img/_DSC1747.png
+thumbnail: /img/202101-book-we-lovemodels-000.jpg
 description: Modeling portfolio featuring commercial campaigns, fashion editorials, and agency books.
 number: 2
-featuredimage: /img/_DSC1747.png
+featuredimage: /img/202101-book-we-lovemodels-000.jpg
 ---
 
 ## Modeling Portfolio
@@ -13,24 +13,47 @@ As a professional model, I focus on versatility, strong camera presence, and aut
 
 ---
 
-### 1. Book with We Love Models
-Portfolio development session for the **We Love Models** agency, designed to build a versatile, international-standard modeling book.
+### 1. Book with We Love Models (2021)
+Portfolio development session for the **We Love Models (Chile)** agency, designed to build a versatile, international-standard modeling book.
 
-![Book with We Love Models](/img/_DSC1747.png)
-*Studio portrait session and casting book for We Love Models.*
+![Book with We Love Models](/img/202101-book-we-lovemodels-001.jpg)
 
----
+![Book with We Love Models](/img/202101-book-we-lovemodels-002.jpg)
 
-### 2. Mall Plaza Commercial Campaign
-Commercial and lifestyle campaign for **Mall Plaza**, showcasing contemporary retail and fashion collections.
+![Book with We Love Models](/img/202101-book-we-lovemodels-003.jpg)
 
-![Mall Plaza Campaign](/img/_DSC1258.PNG)
-*Commercial fashion and lifestyle campaign for Mall Plaza.*
+![Book with We Love Models](/img/202101-book-we-lovemodels-004.jpg)
 
 ---
 
-### 3. Nostalgic Fashion Editorial
-Concept shoot and retro fashion collaboration for the vintage streetwear brand **Nostalgic**.
+### 2. Mall Plaza Commercial Campaign (2021)
+Commercial and lifestyle campaign for **Mall Plaza (Chile)**, showcasing contemporary retail and fashion collections.
 
-![Nostalgic Editorial](/img/_DSC2582.jpg)
-*Retro streetwear editorial and visual series for Nostalgic.*
+![Mall Plaza Campaign](/img/202106-mall-plaza-001.jpeg)
+
+![Mall Plaza Campaign](/img/202106-mall-plaza-002.jpeg)
+
+![Mall Plaza Campaign](/img/202106-mall-plaza-003.jpeg)
+
+---
+
+### 3. Nostalgic Fashion Editorial (2021)
+Concept shoot and retro fashion collaboration for the vintage streetwear brand **Nostalgic (Chile)**, exploring vintage and urban aesthetics.
+
+![Nostalgic Editorial](/img/202106-nostalgic-001.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-002.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-003.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-004.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-005.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-006.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-007.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-008.jpg)
+
+![Nostalgic Editorial](/img/202106-nostalgic-009.jpg)
