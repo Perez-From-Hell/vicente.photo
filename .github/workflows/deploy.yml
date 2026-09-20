@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   pull_request:
+    types: [closed]
     branches:
       - main
-    types: [opened, synchronize, reopened, closed]
 
 permissions:
   contents: read
@@ -17,16 +17,10 @@ concurrency:
 
 jobs:
   build:
-    # Se ejecuta al abrir/actualizar una PR (para validar que compila) o cuando la PR se mergea en main
-    if: github.event.action != 'closed' || github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR head
-        if: github.event.action != 'closed'
-        uses: actions/checkout@v4
-
-      - name: Checkout main for deployment
-        if: github.event.action == 'closed' && github.event.pull_request.merged == true
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: main
@@ -36,8 +30,7 @@ jobs:
 
   deploy:
     needs: build
-    # Solo despliega a producción cuando la PR ha sido formalmente mergeada en main
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     environment:
       name: github-pages
