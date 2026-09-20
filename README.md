@@ -103,10 +103,11 @@ El resultado listo para desplegar se generará en la carpeta `dist/`.
 
 ## 🚀 Despliegue
 
-El despliegue está automatizado. Cada vez que se realiza el **merge de una Pull Request hacia la rama `main`**, GitHub Actions ejecuta el flujo definido en `.github/workflows/deploy.yml`:
-1. Descarga el código actualizado de `main`.
-2. Compila el sitio con Astro (`npm run build`).
-3. Publica automáticamente el resultado en GitHub Pages bajo el dominio `https://vicente.photo`.
+El despliegue es **100% manual**. No se ejecuta nada automáticamente por push o pull request:
+1. Ve a la pestaña **Actions** en el repositorio de GitHub.
+2. Selecciona el flujo **Deploy to GitHub Pages**.
+3. Haz clic en **Run workflow**, elige la **rama** que deseas compilar y desplegar, y presiona el botón verde.
+4. El flujo descargará la rama seleccionada, compilará el sitio con Astro (`npm run build`) y lo publicará en GitHub Pages (`https://vicente.photo`).
 
 ---
 
