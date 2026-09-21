@@ -13,5 +13,9 @@ export default defineConfig({
             prefixDefault: false,
         },
     },
+    redirects: {
+        '/work': '/work/photographer',
+        '/en/work': '/en/work/photographer',
+    },
     integrations: [react(), sitemap()],
 });

@@ -1,13 +1,13 @@
 ---
 templateKey: bio-page
-thumbnail: /img/_DSC1747.png
+thumbnail: /img/banner-bio.jpg
 date: 2023-03-02T10:17:05.133Z
 title: Bio
 description: About the Artist
 number: 1
 pagetype:
   - main
-featuredimage: /img/_DSC1747.png
+featuredimage: /img/banner-bio.jpg
 ---
 
 ## Photography with soul and technique
@@ -18,7 +18,7 @@ My commitment is to build a solid and distinctive visual narrative, ensuring eac
 
 Photograph taken of a guitarist in the downtown streets of Porto, with a deep gaze that conveyed both charisma and affection for his favorite instrument.
 
-![Artist at work](/img/_DSC1258.PNG)
+![Artist at work](/img/bio-001.jpg)
 Technical parameters: ISO 800, F/8, 1/1000
 
 ## Photographic technique
@@ -27,5 +27,5 @@ My work is based on expression through both digital and analog photography. One 
 
 Photograph of Salamanca Cathedral, Castilla y León, in 9x12 large format.
 
-![Studio shelves](/img/_IMG_0535.PNG)
+![Studio shelves](/img/bio-002.jpg)
 Technical parameters: ISO 64, F22, 1/10

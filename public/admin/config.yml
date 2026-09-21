@@ -183,15 +183,15 @@ collections:
             }
           - { label: "Body", name: "body", widget: "markdown" }
 
-      - file: "src/content/pages/{{locale}}/work.md"
-        label: "Work"
-        name: "work"
+      - file: "src/content/pages/{{locale}}/work-photographer.md"
+        label: "Work Photographer"
+        name: "work-photographer"
         fields:
           - {
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "work-page",
+              default: "page",
             }
           - {
               label: "Thumbnail",
@@ -199,11 +199,59 @@ collections:
               widget: image,
               choose_url: false,
             }
-          - { label: "Date", name: "date", widget: "date" }
+          - {
+              label: "Featured Image",
+              name: "featuredimage",
+              widget: image,
+              choose_url: false,
+            }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
           - { label: "Numbering", name: "number", widget: "number" }
+          - {
+              label: "Page Type",
+              name: "pagetype",
+              widget: "select",
+              multiple: true,
+              min: 1,
+              options: [{ label: "Main", value: "main" }],
+            }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - file: "src/content/pages/{{locale}}/work-model.md"
+        label: "Work Model"
+        name: "work-model"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "page",
+            }
+          - {
+              label: "Thumbnail",
+              name: "thumbnail",
+              widget: image,
+              choose_url: false,
+            }
+          - {
+              label: "Featured Image",
+              name: "featuredimage",
+              widget: image,
+              choose_url: false,
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Numbering", name: "number", widget: "number" }
+          - {
+              label: "Page Type",
+              name: "pagetype",
+              widget: "select",
+              multiple: true,
+              min: 1,
+              options: [{ label: "Main", value: "main" }],
+            }
+          - { label: "Body", name: "body", widget: "markdown" }
 
       - file: "src/content/pages/{{locale}}/sold.md"
         label: "exhibitions"
