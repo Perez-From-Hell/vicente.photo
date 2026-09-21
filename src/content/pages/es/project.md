@@ -28,4 +28,15 @@ Parámetros técnicos: ISO 100, F8, 1/125
 ![Naturaleza](/img/proyects-nature-002.jpg)
 Parámetros técnicos: ISO 100, F8, 1/125
 
+## Contenido para redes sociales
+Producción y edición de piezas audiovisuales concebidas para plataformas digitales y redes sociales, enfocadas en dinamismo, impacto visual y narrativa contemporánea.
 
+<video controls playsinline preload="metadata">
+  <source src="/img/project-social-media-001.mp4" type="video/mp4" />
+  Tu navegador no soporta la reproducción de video.
+</video>
+
+<video controls playsinline preload="metadata">
+  <source src="/img/project-social-media-002.mp4" type="video/mp4" />
+  Tu navegador no soporta la reproducción de video.
+</video>
