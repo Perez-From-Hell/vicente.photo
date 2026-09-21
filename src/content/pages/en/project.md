@@ -28,3 +28,15 @@ Technical parameters: ISO 100, F8, 1/125
 ![Nature](/img/proyects-nature-002.jpg)
 Technical parameters: ISO 100, F8, 1/125
 
+## Social Media Content
+Production and editing of audiovisual pieces crafted for digital platforms and social media, highlighting dynamic motion, visual impact, and contemporary storytelling.
+
+<video controls playsinline preload="metadata">
+  <source src="/img/project-social-media-001.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<video controls playsinline preload="metadata">
+  <source src="/img/project-social-media-002.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
