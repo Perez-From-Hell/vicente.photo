@@ -1,9 +1,11 @@
 ---
 templateKey: page
+pagetype:
+  - main
 title: Work as Model
 thumbnail: /img/202101-book-we-lovemodels-000.jpg
 description: Modeling portfolio featuring commercial campaigns, fashion editorials, and agency books.
-number: 2
+number: 3
 featuredimage: /img/202101-book-we-lovemodels-000.jpg
 ---
 

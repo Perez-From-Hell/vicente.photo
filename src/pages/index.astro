@@ -35,6 +35,8 @@ let postCounter = 0;
             postCounter++;
             const cleanSlug = post.slug.replace(/^es\//, '');
             let slug = cleanSlug;
+            if (cleanSlug === 'work-photographer') slug = 'work/photographer';
+            if (cleanSlug === 'work-model') slug = 'work/model';
             if (post.collection === 'work') slug = `work/${cleanSlug}`;
             if (post.collection === 'news') slug = `news/${cleanSlug}`;
             if (post.collection === 'sold') slug = `sold/${cleanSlug}`;

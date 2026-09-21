@@ -1,9 +1,11 @@
 ---
 templateKey: page
+pagetype:
+  - main
 title: Trabajos como Modelo
 thumbnail: /img/202101-book-we-lovemodels-000.jpg
 description: Portafolio de sesiones de moda, campañas comerciales y editoriales como modelo.
-number: 2
+number: 3
 featuredimage: /img/202101-book-we-lovemodels-000.jpg
 ---
 

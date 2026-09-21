@@ -374,3 +374,13 @@ img.gatsby-resp-image-image {
 img {
   border-radius: 10px;
 }
+
+.post-content-body p:has(> img) {
+  text-align: center;
+}
+
+.post-content-body img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
