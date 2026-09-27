@@ -36,6 +36,7 @@ export const ui = {
     'thanks.back': 'Volver al inicio',
     'footer.powered': 'Desarrollado con',
     'footer.licensed': 'Bajo licencia',
+    'footer.cookies': 'Web libre de cookies de rastreo',
   },
   en: {
     'nav.home': 'Home',
@@ -65,6 +66,7 @@ export const ui = {
     'thanks.back': 'Back to Home',
     'footer.powered': 'Powered by',
     'footer.licensed': 'Licensed under',
+    'footer.cookies': 'Tracking cookie-free website',
   },
 } as const;
 
